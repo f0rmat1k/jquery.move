@@ -42,7 +42,7 @@
             return hasTransitions;
         },
         getTransform = function() {
-            var results = context.css('transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
+            var results = context.css('transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/);
             if(!results) return [0, 0, 0];
             if(results[1] == '3d') return results.slice(2,5);
 
@@ -115,6 +115,7 @@
                     }
                     if (transitionPropList.search('transform') <= 0) {
                         if (transitionPropList !== '') {
+
                             context
                                 .css('transition-property', transitionPropList += ', transform')
                                 .css('transition-duration', transitionDurationList += ',' + params.duration);
@@ -132,7 +133,6 @@
 
                         context.css('transition-duration', transitionDurationList);
                     }
-
                     context
                         .css('transform', translateMethod + '(' + (left || 0) + ', ' + (top || 0) + zProp + ')');
                 };

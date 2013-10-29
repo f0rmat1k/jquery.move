@@ -5,18 +5,86 @@
         <script src="jquery.move.js"></script>
         <script src="test.js"></script>
     </head>
-
+    <title>jquery.move exepmpes</title>
     <style>
-        #test {
+        .testBlock {
+            width: 40%;
+            margin: 0 2% 30px 2%;
+            display: inline-block;
+        }
+        .testZone {
+            border: 1px solid #ccc;
+            height: 200px;
+            padding: 10px;
+            overflow: hidden;
+        }
+        .testCube {
+            width: 60px;
+            height: 60px;
             border: 1px solid #000;
-            width: 100px;
-            height: 100px;
-            transition: width 100ms, height 100ms;
-            position: absolute;
+            background: #ccc;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .testBlock_2 .testCube {
+            -o-transition: opacity 0.5s;
+            -webkit-transition: opacity 0.5s;
+            -moz-transition: opacity 0.5s;
+            -ms-transition: opacity 0.5s;
+            transition: opacity 0.5s;
+        }
+        .testBlock_2 .testCube:hover {
+            opacity: 0.5;
+        }
+
+        .testBlock_4 .testCube {
+            left: 200px;
+            top: 130px;
         }
     </style>
 
     <body>
-        <div id="test"></div>
+        <h1>Examples stand</h1>
+
+        <div class="testBlock testBlock_1">
+            <h4>Simple example</h4>
+            <pre>$(this).move({ top: '100px', left: 250 }, 3000);</pre>
+            <div class="testZone">
+                <div class="testCube"></div>
+            </div>
+        </div>
+
+        <div class="testBlock testBlock_2">
+            <h4>Example with existing opacity property (hover)</h4>
+            <pre>$(this).move({ top: '100px', left: 250 }, 2000);</pre>
+            <div class="testZone">
+                <div class="testCube"></div>
+            </div>
+        </div>
+
+        <div class="testBlock testBlock_3">
+            <h4>Example with use '+=' operators</h4>
+            <pre>$(this).move({ top: '+=20px', left: '+=30' }, 500);</pre>
+            <div class="testZone">
+                <div class="testCube"></div>
+            </div>
+        </div>
+
+        <div class="testBlock testBlock_4">
+            <h4>Example with use '-=' operators (yet broken)</h4>
+            <pre>$(this).move({ top: '-=20px', left: '-=30' }, 500);</pre>
+            <div class="testZone">
+                <div class="testCube"></div>
+            </div>
+        </div>
+
+        <div class="testBlock testBlock_5">
+            <h4>Example with use percent</h4>
+            <pre>$(this).move({ top: '30%', left: '50%' }, 500);</pre>
+            <div class="testZone">
+                <div class="testCube"></div>
+            </div>
+        </div>
     </body>
 </html>
